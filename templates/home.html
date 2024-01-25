@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Quantity</th>
+        <!-- <th scope="col">Price</th> -->
+        <th scope="col">Category</th>
+        <th scope="col">Date</th>  
+        <th scope="col">ID</th>    
+      </tr>
+    </thead>
+    <tbody>
+      
+  {% if products %}
+        {% for product in products %}
+          <tr>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.quantity}}</td>
+            <!-- <td>{{product.price}}</td> -->
+            <td>{{product.category}}</td>
+            <td>{{product.date}}</td>
+            <td><a href="{% url 'record' product.id %}">{{product.id}}</a></td>
+          </tr>
+        {% endfor %}
+  {% endif %}
+  
+      
+        </tbody>
+      </table>
+{% else %}
+
+<div class="col-md-6 offset-mid=3">
+    <h2>Login</h2></br>
+    <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username", placeholder="Username" required>
+        </div><br/>
+
+        <div class="mb-3">
+            <input type="password" class="form-control" name="password", placeholder="Password" required>
+        </div><br/>
+
+        <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
+{% endif %}
+
+{% endblock %}

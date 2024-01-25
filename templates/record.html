@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="card">
+    <div class="card-header">
+        <h1>Product Record: </h1>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> <strong>NAME: </strong> {{ product_record.name }} </h5>
+      <h5 class="card-title"> <strong>DESCRIPTION: </strong> {{product_record.description}}  </h5>
+      <h5 class="card-title"> <strong>QUANTITY: </strong> {{product_record.quantity}}  </h5>
+      <h5 class="card-title"> <strong>PRICE: </strong> {{product_record.price}} </h5>
+      <h5 class="card-title"> <strong>CATEGORY: </strong> {{product_record.category}}</h5>
+      <!-- <h5 class="card-title"> <strong>DATE: </strong> {{product_record.date}} </h5>
+      <h5 class="card-title"> <strong>ID: </strong> {{product_record.id}}  </h5> -->
+        {% if CATEGORY.NEPALI_BOOKS  %}
+            <p class="card-text">For Nepali books there will be 25% discount.</p>
+        {% elif CATEGORY.INDIAN_BOOKS %}
+            <p class="card-text">For Indian books there will be 10% discount.</p>
+        {% else %}
+            <p class="card-text">For Stationary there will be 5% discount.</p>
+        {% endif %}
+    </div>
+        <a href="{% url 'home' %}" class="btn btn-secondary">BACK</a>
+        <a href="{% url 'delete' product_record.id %}" class="btn btn-danger">DELETE</a>
+  </div>
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+{% endblock %}
