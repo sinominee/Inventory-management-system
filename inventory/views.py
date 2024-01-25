@@ -68,7 +68,7 @@ def update_product(request, pk):
             form.save()
             messages.success(request, "Product data has been UPDATED")
             return redirect('home')
-        return render(request, 'update_product.html', {'from': form})
+        return render(request, 'update_product.html', {'form':form})
     else:
         messages.success(request, "you must be logged")
         return redirect('home')

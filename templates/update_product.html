@@ -6,7 +6,7 @@
 <h3> Update Product </h3>
 
 
-<form METHOD="POST" action="{% url 'update_product' %}">
+<form METHOD="POST" >
     {% csrf_token %}
 
     {{ form.as_p }}
