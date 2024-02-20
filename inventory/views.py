@@ -81,4 +81,3 @@ def update_product(request, pk):
      
                    
                      
-
